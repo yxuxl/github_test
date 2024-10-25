@@ -5,11 +5,11 @@ int main() {
     int number, sum, digit;
 
     while (1) {
-        printf("¼ıÀÚ¸¦ ÀÔ·ÂÇÏ¼¼¿ä (À½¼ö ÀÔ·Â ½Ã Á¾·á): ");
+        printf("ìˆ«ìë¥¼ ì…ë ¥í•˜ì„¸ìš” (ìŒìˆ˜ ì…ë ¥ ì‹œ ì¢…ë£Œ): ");
         scanf("%d", &number);
 
         if (number < 0) {
-            printf("ÇÁ·Î±×·¥À» Á¾·áÇÕ´Ï´Ù.\n");
+            printf("í”„ë¡œê·¸ë¨ì„ ì¢…ë£Œí•©ë‹ˆë‹¤.\n");
             break;
         }
 
@@ -20,7 +20,7 @@ int main() {
             number /= 10;
         }
 
-        printf("ÀÚ¸®¼öÀÇ ÇÕ: %d\n", sum);
+        printf("ìë¦¬ìˆ˜ì˜ í•©: %d\n", sum);
     }
 
     return 0;
