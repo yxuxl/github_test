@@ -1,13 +1,53 @@
-﻿'은행다시.c.exe'(Win32): 'C:\Users\김유리\Desktop\C언어\은행다시.c\x64\Debug\은행다시.c.exe'을(를) 로드했습니다. 기호가 로드되었습니다.
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\ntdll.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\kernel32.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\KernelBase.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\apphelp.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\vcruntime140d.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\ucrtbased.dll'을(를) 로드했습니다. 
-9944 스레드가 종료되었습니다(코드: 0 (0x0)).
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\kernel.appcore.dll'을(를) 로드했습니다. 
-'은행다시.c.exe'(Win32): 'C:\Windows\System32\msvcrt.dll'을(를) 로드했습니다. 
-13628 스레드가 종료되었습니다(코드: 0 (0x0)).
-26756 스레드가 종료되었습니다(코드: 0 (0x0)).
-'[14936] 은행다시.c.exe' 프로그램이 종료되었습니다(코드: 0 (0x0)).
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+    int balance = 100000;
+    int option, amount = 0;
+
+    while (1) {
+        printf("\n1. 잔액 조회\n");
+        printf("2. 입금\n");
+        printf("3. 출금\n");
+        printf("4. 종료\n");
+        printf("메뉴를 선택하세요: ");
+        scanf("%d", &option);
+
+        switch (option) {
+        case 1:
+            printf("현재 잔액: %d원\n", balance);
+            break;
+        case 2:
+            printf("입금할 금액을 입력하세요: ");
+            scanf("%d", &amount);
+            if (amount > 0) {
+                balance += amount;
+                printf("입금 완료. 현재 잔액: %d원\n", balance);
+            }
+            else {
+                printf("올바른 금액을 입력하세요.\n");
+            }
+            break;
+        case 3:
+            printf("출금할 금액을 입력하세요: ");
+            scanf("%d", &amount);
+            if (amount > balance) {
+                printf("잔액이 부족합니다.\n");
+            }
+            else if (amount > 0) {
+                balance -= amount;
+                printf("출금 완료. 현재 잔액: %d원\n", balance);
+            }
+            else {
+                printf("올바른 금액을 입력하세요.\n");
+            }
+            break;
+        case 4:
+            printf("프로그램을 종료합니다.\n");
+            return 0;
+        default:
+            printf("잘못된 선택입니다. 다시 입력하세요.\n");
+        }
+    }
+}
