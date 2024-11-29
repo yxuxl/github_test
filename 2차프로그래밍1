@@ -1,0 +1,80 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+char arr1[5][5];
+char arr2[5][5];
+int i, j, k = 0;
+int hang, yeol = 0;
+int total = 25;
+int c_count = 20;
+int f_count = 5;
+
+int func()
+{
+	for (int i = 0; i < total;i++)
+	{
+		int radom = rand() % total;
+		int hang = radom / 5;
+		int yeol = radom % 5;
+
+		if (arr1[hang][yeol] != '.')
+		{
+			continue;
+		}
+		if (c_count > 0)
+		{
+			arr2[hang][yeol] = 'C';
+			c_count--;
+		}
+		else if (f_count > 0)
+		{
+			arr2[hang][yeol] = 'F';
+			f_count--;
+		}
+	}
+	while (k < 5)
+	{
+		printf("컵을 선택하세요 (행번호 열번호): ");
+		scanf("%d %d", &hang, &yeol);
+		arr1[hang][yeol] = arr2[hang][yeol];
+		for (i = 0;i < 5;i++)
+		{
+			for (j = 0;j < 5;j++)
+			{
+				printf("%c", arr1[i][j]);
+			}
+			printf("\n");
+		}
+		k++;
+	}
+}
+
+int main()
+{
+	int k = 0;
+	srand(time(NULL));
+
+	for (i = 0;i < 5;i++)
+	{
+		for (j = 0;j < 5;j++)
+		{
+			arr1[i][j] = '.';
+			printf("%c", arr1[i][j]);
+		}
+		printf("\n");
+	}
+	func();
+
+	for (i = 0;i < 5;i++)
+	{
+		for (j = 0;j < 5;j++)
+		{
+			printf("%c", arr2[i][j]);
+		}
+		printf("\n");
+	}
+
+
+}
